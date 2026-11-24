@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#10232d">
+<title>Triathlon 2027 Tracker</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<style>
+:root{--bg:#0b151b;--panel:#14242d;--panel2:#1a303b;--line:#29434f;--text:#edf4f5;--muted:#9eb1b8;--mint:#8ee0bd;--blue:#83c7ed;--orange:#f2bd78;--red:#f18e8e;--radius:18px}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}.shell{max-width:1180px;margin:auto;padding:18px 18px 90px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}.brand{display:flex;align-items:center;gap:12px}.logo{width:42px;height:42px;border-radius:13px;background:linear-gradient(145deg,#8ee0bd,#83c7ed);display:grid;place-items:center;color:#10232d;font-weight:900;font-size:20px}.brand h1{font-size:19px;line-height:1.15;margin:0}.brand small{color:var(--muted)}.top-actions{display:flex;gap:8px;flex-wrap:wrap}.btn{border:1px solid var(--line);background:var(--panel2);color:var(--text);padding:10px 13px;border-radius:12px}.btn.primary{background:var(--mint);color:#10232d;border-color:var(--mint);font-weight:750}.btn.ghost{background:transparent}.btn.danger{color:#ffb0b0}.nav{display:flex;gap:7px;overflow:auto;padding:4px 0 14px;position:sticky;top:0;background:var(--bg);z-index:5}.nav button{white-space:nowrap;border:1px solid var(--line);background:var(--panel);color:var(--muted);padding:9px 13px;border-radius:999px}.nav button.active{background:var(--mint);color:#10232d;border-color:var(--mint);font-weight:750}.view{display:none}.view.active{display:block}.hero{background:linear-gradient(120deg,#17343c,#1a2a3b);border:1px solid #31515b;border-radius:22px;padding:22px;margin-bottom:16px}.eyebrow{color:var(--mint);font-size:11px;letter-spacing:.13em;font-weight:800;text-transform:uppercase}.hero h2{font-size:clamp(25px,5vw,38px);margin:5px 0}.hero p{color:#c1d2d6;margin:5px 0 0}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px;min-width:0}.metric .value{font-size:28px;font-weight:800;letter-spacing:-.04em}.metric .label{color:var(--muted);font-size:12px}.metric .sub{font-size:12px;color:var(--mint);margin-top:3px}.section-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:20px 0 10px}.section-head h2{font-size:18px;margin:0}.muted{color:var(--muted)}.small{font-size:12px}.race{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}.race:last-child{border:0}.tag{font-size:11px;border-radius:999px;padding:4px 8px;background:#23453f;color:var(--mint);white-space:nowrap}.tag.blue{background:#203e51;color:var(--blue)}.tag.orange{background:#4a3826;color:var(--orange)}.progress{height:8px;background:#263b45;border-radius:20px;overflow:hidden}.progress span{display:block;height:100%;background:var(--mint);border-radius:20px}.day-list{display:grid;gap:9px}.day{display:grid;grid-template-columns:74px 1fr auto;gap:12px;align-items:center;background:var(--panel);border:1px solid var(--line);padding:12px;border-radius:14px}.day.today{border-color:var(--mint)}.day.done{opacity:.7}.day .date{font-size:12px;color:var(--muted)}.day strong{display:block}.day .desc{font-size:12px;color:var(--muted)}.day-actions{display:flex;gap:6px;align-items:center}.iconbtn{border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:10px;padding:7px 9px}.calendar-controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.calendar-controls h2{margin:0 auto 0 0}.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field{display:grid;gap:5px}.field label{font-size:12px;color:var(--muted)}.field input,.field select,.field textarea{width:100%;background:#0e1c23;color:var(--text);border:1px solid var(--line);border-radius:11px;padding:11px;min-width:0}.field textarea{min-height:75px;resize:vertical}.field.full{grid-column:1/-1}.form-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.tablewrap{overflow:auto}.table{width:100%;border-collapse:collapse;font-size:13px}.table th,.table td{text-align:left;padding:10px;border-bottom:1px solid var(--line);white-space:nowrap}.table th{color:var(--muted);font-weight:600}.bar{height:7px;background:#263b45;border-radius:20px;overflow:hidden;min-width:75px}.bar span{display:block;height:100%;background:var(--blue)}.empty{padding:24px;text-align:center;color:var(--muted)}.chart{height:210px;width:100%;display:block}.legend{display:flex;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:12px}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#e7fff4;color:#10232d;padding:11px 16px;border-radius:12px;font-weight:700;box-shadow:0 8px 30px #0008;display:none;z-index:20}.notice{background:#263b35;border:1px solid #426d5e;color:#c8f2df;padding:12px;border-radius:12px;font-size:13px}.tabs{display:flex;gap:7px;flex-wrap:wrap}.tabs button{background:transparent;color:var(--muted);border:1px solid var(--line);border-radius:10px;padding:8px 11px}.tabs button.active{background:var(--panel2);color:var(--mint);border-color:#52796d}.week-summary{display:flex;justify-content:space-between;gap:12px;align-items:center;margin:12px 0}.weight-row{display:grid;grid-template-columns:1fr 1fr auto;gap:8px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}.footer{text-align:center;color:var(--muted);font-size:11px;margin-top:25px}
+@media(max-width:760px){.shell{padding:13px 12px 90px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.grid.two{grid-template-columns:1fr}.hero{padding:18px}.top{align-items:flex-start}.top-actions .btn{padding:8px 10px}.day{grid-template-columns:58px 1fr auto;padding:10px;gap:8px}.day-actions .btnlabel{display:none}.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}.metric .value{font-size:25px}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="top">
+ <div class="brand"><div class="logo">T</div><div><h1>TRIATHLON 2027</h1><small>Personal training tracker</small></div></div>
+ <div class="top-actions"><button class="btn" id="exportTop">Backup</button><button class="btn" id="addTop">＋ Log</button></div>
+</header>
+<nav class="nav" id="nav">
+ <button class="active" data-view="dashboard">Overview</button><button data-view="calendar">Training plan</button><button data-view="log">Log workout</button><button data-view="analytics">Analytics</button><button data-view="weight">Weight</button><button data-view="races">Races</button><button data-view="settings">Backup & settings</button>
+</nav>
+
+<section class="view active" id="dashboard">
+ <div class="hero"><div class="eyebrow">Your 2027 season</div><h2>Build fitness. Race strong.</h2><p id="heroLine">Three races. One progressive training season.</p></div>
+ <div class="grid" id="metrics"></div>
+ <div class="section-head"><h2>Next race</h2><span class="muted small" id="nextRaceDate"></span></div>
+ <div class="card" id="nextRace"></div>
+ <div class="section-head"><h2>This week's training</h2><button class="btn ghost" data-goto="calendar">Full calendar →</button></div>
+ <div class="card"><div class="week-summary"><div><strong id="weekRange">This week</strong><div class="muted small" id="weekHours">0 of 8–10 hours</div></div><strong id="weekCount">0 / 0</strong></div><div class="progress"><span id="weekProgress" style="width:0%"></span></div><div class="day-list" id="weekList" style="margin-top:13px"></div></div>
+ <div class="section-head"><h2>Season goals</h2></div>
+ <div class="grid two"><div class="card"><strong>Running first</strong><p class="muted small">Build consistent, comfortable running before adding demanding intervals.</p></div><div class="card"><strong>Progress gradually</strong><p class="muted small">Most training stays easy. Recovery weeks protect consistency.</p></div></div>
+</section>
+
+<section class="view" id="calendar">
+ <div class="card">
+  <div class="calendar-controls"><h2 id="calTitle">Training calendar</h2><button class="btn" id="prevWeek">←</button><button class="btn" id="thisWeek">Today</button><button class="btn" id="nextWeek">→</button></div>
+  <p class="muted small">Select a planned session to log actual results, mark it complete, or edit the plan. Sundays are rest days except race dates.</p>
+  <div class="day-list" id="calendarList"></div>
+ </div>
+</section>
+
+<section class="view" id="log">
+ <div class="grid two">
+  <div class="card">
+   <h2 style="margin-top:0">Log a workout</h2>
+   <form id="workoutForm">
+    <input type="hidden" id="workoutId">
+    <div class="formgrid">
+     <div class="field"><label>Date</label><input type="date" id="wDate" required></div>
+     <div class="field"><label>Discipline</label><select id="wType"><option>Run</option><option>Bike</option><option>Swim</option><option>Strength</option><option>Brick</option><option>Other</option></select></div>
+     <div class="field"><label>Duration (minutes)</label><input type="number" min="0" step="1" id="wDuration" placeholder="e.g. 45"></div>
+     <div class="field"><label>Distance (km)</label><input type="number" min="0" step="0.01" id="wDistance" placeholder="e.g. 5"></div>
+     <div class="field"><label>Average heart rate (bpm)</label><input type="number" min="0" id="wHr" placeholder="Optional"></div>
+     <div class="field"><label>Average pace / speed</label><input id="wPace" placeholder="e.g. 7:30 /km or 22 km/h"></div>
+     <div class="field"><label>Effort (RPE 1–10)</label><select id="wRpe"><option value="">Not recorded</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select></div>
+     <div class="field"><label>Session status</label><select id="wStatus"><option>Completed</option><option>Modified</option><option>Partial</option></select></div>
+     <div class="field full"><label>Notes</label><textarea id="wNotes" placeholder="How did it feel? Route, hills, conditions, soreness..."></textarea></div>
+    </div>
+    <div class="form-actions"><button class="btn primary" type="submit">Save workout</button><button class="btn" type="button" id="clearWorkout">Clear</button></div>
+   </form>
+  </div>
+  <div class="card"><h2 style="margin-top:0">Recent workouts</h2><div id="recentWorkouts"></div></div>
+ </div>
+</section>
+
+<section class="view" id="analytics">
+ <div class="section-head"><h2>Training analytics</h2><span class="muted small">Based on logged sessions</span></div>
+ <div class="grid" id="analyticsMetrics"></div>
+ <div class="grid two" style="margin-top:12px">
+  <div class="card"><h3 style="margin-top:0">Weekly training time</h3><canvas class="chart" id="volumeChart"></canvas></div>
+  <div class="card"><h3 style="margin-top:0">Distance by discipline</h3><canvas class="chart" id="distanceChart"></canvas><div class="legend"><span><i class="dot" style="background:#8ee0bd"></i>Run</span><span><i class="dot" style="background:#83c7ed"></i>Bike</span><span><i class="dot" style="background:#f2bd78"></i>Swim</span></div></div>
+ </div>
+ <div class="card" style="margin-top:12px"><h3 style="margin-top:0">Recent training history</h3><div class="tablewrap"><table class="table"><thead><tr><th>Date</th><th>Type</th><th>Distance</th><th>Time</th><th>RPE</th></tr></thead><tbody id="historyTable"></tbody></table></div></div>
+</section>
+
+<section class="view" id="weight">
+ <div class="grid two">
+  <div class="card"><div class="eyebrow">Weight target</div><h2 style="font-size:34px;margin:5px 0"><span id="currentWeight">69.0</span> kg</h2><p class="muted small">Target: 62 kg · Starting point: 69 kg</p><div class="progress"><span id="weightProgress" style="width:0%"></span></div><p class="small muted" id="weightRemaining"></p></div>
+  <div class="card"><h3 style="margin-top:0">Add weigh-in</h3><form id="weightForm"><div class="field"><label>Date</label><input type="date" id="weightDate" required></div><div class="field" style="margin-top:10px"><label>Weight (kg)</label><input type="number" id="weightValue" min="30" max="250" step=".1" placeholder="e.g. 68.7" required></div><div class="form-actions"><button class="btn primary">Save weight</button></div></form></div>
+ </div>
+ <div class="card" style="margin-top:12px"><h3 style="margin-top:0">Weight history</h3><canvas class="chart" id="weightChart"></canvas><div id="weightHistory"></div></div>
+</section>
+
+<section class="view" id="races">
+ <div class="hero"><div class="eyebrow">Race calendar</div><h2>Three opportunities to get stronger.</h2><p>Countdowns use the device's local date.</p></div>
+ <div class="day-list" id="raceList"></div>
+ <div class="notice" style="margin-top:12px">April race date is not confirmed yet. Update it in Settings when the organizer announces it. June sprint distance is set to 750m swim / 20km bike / 5km run.</div>
+</section>
+
+<section class="view" id="settings">
+ <div class="grid two">
+  <div class="card"><h2 style="margin-top:0">Backup & restore</h2><p class="muted small">Your records stay in this browser on this device. Export a backup regularly, especially before changing phones or clearing browser data.</p><div class="form-actions"><button class="btn primary" id="exportBtn">Export full backup (JSON)</button><button class="btn" id="exportCsv">Export workouts (CSV)</button></div><div class="field" style="margin-top:14px"><label>Restore from JSON backup</label><input type="file" id="importFile" accept=".json,application/json"></div><p class="small muted">Restoring replaces the current app data. Export a backup first if you want to keep it.</p></div>
+  <div class="card"><h2 style="margin-top:0">Athlete profile & race settings</h2><form id="settingsForm">
+   <div class="formgrid">
+    <div class="field"><label>Current baseline weight (kg)</label><input type="number" step=".1" id="sStartWeight"></div>
+    <div class="field"><label>Target weight (kg)</label><input type="number" step=".1" id="sTargetWeight"></div>
+    <div class="field"><label>April race date (optional)</label><input type="date" id="sAprilDate"></div>
+    <div class="field"><label>Weekly training target (hours)</label><input type="number" min="1" max="20" id="sHours"></div>
+   </div><div class="form-actions"><button class="btn primary">Save settings</button></div>
+  </form></div>
+ </div>
+ <div class="card" style="margin-top:12px"><h3 style="margin-top:0">Data & privacy</h3><p class="muted small">This app uses local browser storage only. It does not send workouts, weight, or personal details to a server. Browser private/incognito mode may not retain data. For reliable Android installation, host this folder on a secure HTTPS static host such as GitHub Pages, then open it in Chrome and choose “Install app” or “Add to Home screen”.</p><button class="btn danger" id="resetBtn">Reset all app data</button></div>
+</section>
+<div class="footer">TRIATHLON 2027 TRACKER · Local-first · Back up your data regularly</div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+const KEY='triathlon2027_local_v1';
+const START='2026-11-24', END='2027-06-13';
+const defaultState={
+ profile:{startWeight:69,targetWeight:62,weeklyHours:9,aprilDate:''},
+ workouts:[],weights:[{date:'2026-11-24',value:69}],
+ plans:{},createdAt:new Date().toISOString()
+};
+let state=loadState(),weekOffset=0;
+const $=id=>document.getElementById(id);
+function loadState(){try{const v=JSON.parse(localStorage.getItem(KEY));return v?{...structuredClone(defaultState),...v,profile:{...defaultState.profile,...v.profile}}:structuredClone(defaultState)}catch(e){return structuredClone(defaultState)}}
+function save(){localStorage.setItem(KEY,JSON.stringify(state));renderAll()}
+function toast(s){const t=$('toast');t.textContent=s;t.style.display='block';setTimeout(()=>t.style.display='none',2200)}
+function dateObj(s){return new Date(s+'T12:00:00')}
+function iso(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function addDays(s,n){let d=dateObj(s);d.setDate(d.getDate()+n);return iso(d)}
+function fmtDate(s,opts={weekday:'short',month:'short',day:'numeric'}){return dateObj(s).toLocaleDateString(undefined,opts)}
+function daysBetween(a,b){return Math.round((dateObj(b)-dateObj(a))/86400000)}
+function todayISO(){return iso(new Date())}
+function weekStart(s){let d=dateObj(s);let day=(d.getDay()+6)%7;d.setDate(d.getDate()-day);return iso(d)}
+function phase(s){if(s<'2026-12-21')return 'Aerobic rebuilding';if(s<'2027-01-18')return 'Endurance development';if(s<'2027-02-08')return 'Duathlon-specific';if(s<'2027-02-21')return 'Duathlon taper';if(s<'2027-03-01')return 'Recovery';if(s<'2027-04-01')return 'Standard-distance build';if(s<'2027-04-20')return 'Standard race / recovery';if(s<'2027-06-06')return 'Sprint-specific build';return 'Sprint taper'}
+function planFor(s){
+ if(state.plans[s])return state.plans[s];
+ const d=dateObj(s),dow=d.getDay(),p=phase(s),wk=Math.max(0,Math.floor(daysBetween('2026-11-24',s)/7));
+ let plan=null;
+ const make=(type,title,duration,distance,detail)=>({date:s,type,title,duration,distance,detail,status:'Planned'});
+ if(s==='2027-02-21')return make('Race','DUATHLON RACE · 10K / 45K / 5K',0,60,'Race day. Run 10km → bike 45km → run 5km. Use rehearsed fueling and pacing.');
+ if(s==='2027-06-13')return make('Race','SPRINT TRIATHLON · 750M / 20K / 5K',0,25.75,'Race day. Swim 750m → bike 20km → run 5km.');
+ if(state.profile.aprilDate && s===state.profile.aprilDate)return make('Race','STANDARD TRIATHLON · 1.5K / 45K / 10K',0,56.5,'Race day. Confirm organizer distances and race instructions.');
+ if(dow===1)return make('Rest','Rest day',0,0,'Full rest. Optional gentle mobility.');
+ if(dow===0)return make('Rest','Rest day',0,0,'No scheduled training. Sunday is your rest day except race days.');
+ const recov=(p==='Duathlon taper'||p==='Sprint taper'||p==='Recovery'||(wk%4===3));
+ if(dow===2){
+  let dur=recov?30:Math.min(55,30+Math.floor(wk/2)*5);
+  let swim=recov?1200:Math.min(1900,1200+Math.floor(wk/2)*100);
+  return [make('Run','Easy run / run development',dur,+(dur/8.5).toFixed(1),'Conversational effort, RPE 3–4. Run-walk is fine. Keep this easy unless a quality session is specifically prescribed.'),make('Swim','Technique + aerobic swim',45,swim/1000,'Warm up, drills, then relaxed aerobic repeats. Rest as needed.')];
+ }
+ if(dow===3){
+  let bike=recov?50:Math.min(85,60+Math.floor(wk/3)*5);
+  return [make('Bike','Rolling hills endurance ride',bike,+(bike*.35).toFixed(1),'Mostly Z2 / RPE 3–4. Keep climbs controlled; spin easily between efforts.'),make('Strength','Lower-body strength',35,0,'Squat, Romanian deadlift, split squat, calf raises and plank. Leave 2–3 reps in reserve.')];
+ }
+ if(dow===4){
+  let dur=recov?30:Math.min(55,30+Math.floor(wk/3)*5);
+  let swim=recov?1200:Math.min(2000,1300+Math.floor(wk/2)*100);
+  let detail=wk<2?'Easy conversational run; no hard intervals yet.': 'Controlled quality only if recovered: warm up, 4 × 3 min moderate with 2 min easy, cool down. Otherwise easy run.';
+  return [make('Run','Run endurance / controlled quality',dur,+(dur/8.5).toFixed(1),detail),make('Swim','Endurance + speed swim',45,swim/1000,'Mix relaxed 100m–400m repeats with good form. Avoid sprinting when technique breaks down.')];
+ }
+ if(dow===5)return make('Strength','Core + stability strength',35,0,'Step-ups, glute bridges, single-leg hinge, dead bugs, side plank and band walks. Keep this lighter before Saturday.');
+ if(dow===6){
+  let bike=recov?80:Math.min(180,90+Math.max(0,wk-1)*8);
+  let brick=recov?10:Math.min(30,10+Math.max(0,wk-1)*2);
+  if(p==='Duathlon-specific'){bike=Math.min(150,120+Math.max(0,wk-8)*10);brick=20}
+  if(p==='Duathlon taper'){bike=65;brick=10}
+  if(p==='Sprint-specific build'){bike=100+Math.min(35,Math.max(0,wk-22)*5);brick=20}
+  if(p==='Sprint taper'){bike=60;brick=10}
+  return [make('Bike','Long aerobic ride',bike,+(bike*.34).toFixed(1),'Mostly easy endurance on rolling roads. Practice fueling on rides over 75–90 minutes.'),make('Run','Brick run',brick,+(brick/8.5).toFixed(1),'Immediately after the bike. Very easy first 5–10 minutes; focus on relaxed form, not pace.')];
+ }
+ return make('Rest','Rest',0,0,'');
+}
+function flattenPlan(s){let x=planFor(s);return Array.isArray(x)?x:[x]}
+function allDates(){let a=[];for(let s=START;s<=END;s=addDays(s,1))a.push(s);return a}
+function allPlans(){return allDates().flatMap(s=>flattenPlan(s))}
+function actualFor(date,type){return state.workouts.filter(w=>w.date===date&&(w.type===type||(type==='Run'&&w.type==='Brick')))}
+function completed(plan){return state.workouts.some(w=>w.date===plan.date&&(w.type===plan.type|| (plan.type==='Run'&&w.type==='Brick')))}
+function fmtDuration(m){if(!m)return '—';let h=Math.floor(m/60),r=m%60;return h?`${h}h ${r}m`:`${r} min`}
+function safe(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function nav(view){document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===view));document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===view));if(view==='analytics')drawAnalytics();if(view==='calendar')renderCalendar();if(view==='weight')renderWeight()}
+document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>nav(b.dataset.view));
+document.querySelectorAll('[data-goto]').forEach(b=>b.onclick=()=>nav(b.dataset.goto));
+function renderDashboard(){
+ const now=todayISO(),ws=weekStart(now),we=addDays(ws,6);
+ const next=[{name:'Duathlon',date:'2027-02-21',dist:'10km run · 45km bike · 5km run'},{name:'Standard triathlon',date:state.profile.aprilDate||'',dist:'1.5km swim · 45km bike · 10km run'},{name:'Sprint triathlon',date:'2027-06-13',dist:'750m swim · 20km bike · 5km run'}].filter(r=>r.date&&r.date>=now).sort((a,b)=>a.date.localeCompare(b.date))[0];
+ const wks=state.workouts.filter(w=>w.date>=ws&&w.date<=we),mins=wks.reduce((a,w)=>a+(+w.duration||0),0);
+ const p=allPlans().filter(x=>x.date>=ws&&x.date<=we&&x.type!=='Rest'&&x.type!=='Race'),done=p.filter(completed).length;
+ const weight=state.weights.slice().sort((a,b)=>a.date.localeCompare(b.date)).at(-1)?.value??state.profile.startWeight;
+ const metrics=[['CURRENT WEIGHT',weight.toFixed(1)+' kg','Target '+state.profile.targetWeight+' kg'],['WORKOUTS THIS WEEK',wks.length,'Logged sessions'],['TRAINING TIME',fmtDuration(mins),'Actual time logged'],['NEXT RACE',next?daysBetween(now,next.date)+' days':'—',next?.name||'No upcoming race']];
+ $('metrics').innerHTML=metrics.map(m=>`<div class="card metric"><div class="label">${m[0]}</div><div class="value">${m[1]}</div><div class="sub">${m[2]}</div></div>`).join('');
+ $('weekRange').textContent=fmtDate(ws,{month:'short',day:'numeric'})+' – '+fmtDate(we,{month:'short',day:'numeric'});
+ $('weekHours').textContent=`${(mins/60).toFixed(1)} of ${state.profile.weeklyHours} target hours`;
+ $('weekCount').textContent=`${done} / ${p.length} planned`;
+ $('weekProgress').style.width=(p.length?done/p.length*100:0)+'%';
+ $('weekList').innerHTML=allPlans().filter(x=>x.date>=ws&&x.date<=we&&x.type!=='Rest').map(x=>`<div class="day ${completed(x)?'done':''}"><div class="date">${fmtDate(x.date,{weekday:'short',day:'numeric'})}</div><div><strong>${safe(x.title)}</strong><div class="desc">${x.duration?fmtDuration(x.duration):'Race day'} · ${x.distance||0} ${x.type==='Swim'?'km':'km'}</div></div><span class="tag ${completed(x)?'':'blue'}">${completed(x)?'Done':x.status}</span></div>`).join('')||'<div class="empty">No sessions scheduled this week.</div>';
+ if(next){$('nextRaceDate').textContent=fmtDate(next.date);$('nextRace').innerHTML=`<div class="eyebrow">${daysBetween(now,next.date)} days remaining</div><h2 style="margin:6px 0">${safe(next.name)}</h2><p class="muted">${safe(next.dist)}</p><div class="progress"><span style="width:${Math.max(0,Math.min(100,100-daysBetween(now,next.date)/200*100))}%"></span></div>`}else{$('nextRace').textContent='All scheduled races completed.'}
+}
+function renderCalendar(){
+ const base=addDays(weekStart(todayISO()),weekOffset*7),end=addDays(base,6);
+ $('calTitle').textContent=fmtDate(base,{month:'long',day:'numeric'})+' – '+fmtDate(end,{month:'long',day:'numeric',year:'numeric'});
+ const days=[];for(let s=base;s<=end;s=addDays(s,1)){if(s<START||s>END)continue;days.push(...flattenPlan(s))}
+ $('calendarList').innerHTML=days.map((p,i)=>{let isdone=completed(p);return `<div class="day ${p.date===todayISO()?'today':''} ${isdone?'done':''}"><div class="date">${fmtDate(p.date,{weekday:'short',month:'short',day:'numeric'})}</div><div><strong>${safe(p.title)}</strong><div class="desc">${p.duration?fmtDuration(p.duration):'Race / rest'} · ${p.distance||0} km · ${safe(p.detail)}</div></div><div class="day-actions"><button class="iconbtn" data-log="${p.date}" data-type="${p.type}" title="Log this session">＋</button><button class="iconbtn" data-done="${p.date}" data-type="${p.type}" title="Mark complete">✓</button></div></div>`}).join('')||'<div class="empty">No plan in this week.</div>';
+ $('calendarList').querySelectorAll('[data-log]').forEach(b=>b.onclick=()=>{openLog(b.dataset.log,b.dataset.type);nav('log')});
+ $('calendarList').querySelectorAll('[data-done]').forEach(b=>b.onclick=()=>{let date=b.dataset.done,type=b.dataset.type;let existing=state.workouts.find(w=>w.date===date&&w.type===type);if(existing){toast('A workout of this type is already logged.')}else{state.workouts.push({id:crypto.randomUUID(),date,type,duration:0,distance:0,status:'Completed',notes:'Marked complete from training plan'});save();toast('Marked complete')}})
+}
+function openLog(date=todayISO(),type='Run'){
+ $('workoutForm').reset();$('workoutId').value='';$('wDate').value=date;$('wType').value=['Run','Bike','Swim','Strength','Brick','Other'].includes(type)?type:'Run';$('wStatus').value='Completed';
+}
+$('workoutForm').onsubmit=e=>{e.preventDefault();let id=$('workoutId').value||crypto.randomUUID();let w={id,date:$('wDate').value,type:$('wType').value,duration:+$('wDuration').value||0,distance:+$('wDistance').value||0,hr:+$('wHr').value||0,pace:$('wPace').value,rpe:+$('wRpe').value||0,status:$('wStatus').value,notes:$('wNotes').value};let ix=state.workouts.findIndex(x=>x.id===id);if(ix>=0)state.workouts[ix]=w;else state.workouts.push(w);save();openLog(todayISO());toast('Workout saved locally')};
+$('clearWorkout').onclick=()=>openLog();
+function renderRecent(){let list=state.workouts.slice().sort((a,b)=>b.date.localeCompare(a.date)).slice(0,8);$('recentWorkouts').innerHTML=list.map(w=>`<div class="race"><div><strong>${safe(w.type)} · ${fmtDate(w.date,{month:'short',day:'numeric'})}</strong><div class="muted small">${w.distance||0} km · ${fmtDuration(w.duration)} · ${safe(w.status)}</div></div><button class="iconbtn" data-edit="${w.id}">Edit</button></div>`).join('')||'<div class="empty">No workouts logged yet.</div>';document.querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>{let w=state.workouts.find(x=>x.id===b.dataset.edit);$('workoutId').value=w.id;$('wDate').value=w.date;$('wType').value=w.type;$('wDuration').value=w.duration||'';$('wDistance').value=w.distance||'';$('wHr').value=w.hr||'';$('wPace').value=w.pace||'';$('wRpe').value=w.rpe||'';$('wStatus').value=w.status;$('wNotes').value=w.notes||'';nav('log')})}
+function totals(){let t={Run:0,Bike:0,Swim:0,Strength:0,Brick:0,Other:0},mins=0;state.workouts.forEach(w=>{t[w.type]=(t[w.type]||0)+(+w.distance||0);mins+=+w.duration||0});return {t,mins}}
+function renderAnalytics(){
+ const {t,mins}=totals(),wk=state.workouts.length?Math.max(1,Math.ceil(daysBetween(weekStart(state.workouts.map(w=>w.date).sort()[0]),weekStart(state.workouts.map(w=>w.date).sort().at(-1)))/7)+1):0;
+ $('analyticsMetrics').innerHTML=[['TOTAL TRAINING',fmtDuration(mins)],['RUN DISTANCE',t.Run.toFixed(1)+' km'],['BIKE DISTANCE',t.Bike.toFixed(1)+' km'],['SWIM DISTANCE',(t.Swim*1000).toFixed(0)+' m']].map(m=>`<div class="card metric"><div class="label">${m[0]}</div><div class="value">${m[1]}</div></div>`).join('');
+ $('historyTable').innerHTML=state.workouts.slice().sort((a,b)=>b.date.localeCompare(a.date)).slice(0,30).map(w=>`<tr><td>${fmtDate(w.date,{month:'short',day:'numeric',year:'2-digit'})}</td><td>${safe(w.type)}</td><td>${w.distance||0} km</td><td>${fmtDuration(w.duration)}</td><td>${w.rpe||'—'}</td></tr>`).join('')||'<tr><td colspan="5" class="muted">Log workouts to see your history.</td></tr>';
+ drawBars('volumeChart',weeklyMinutes(),'Weekly minutes','#83c7ed');
+ drawDonut('distanceChart',[t.Run,t.Bike,t.Swim*1000],['#8ee0bd','#83c7ed','#f2bd78']);
+}
+function weeklyMinutes(){let arr=[];let end=weekStart(todayISO());for(let i=7;i>=0;i--){let s=addDays(end,-7*i),e=addDays(s,6);let m=state.workouts.filter(w=>w.date>=s&&w.date<=e).reduce((a,w)=>a+(+w.duration||0),0);arr.push({label:fmtDate(s,{month:'short',day:'numeric'}),value:m})}return arr}
+function canvasSetup(id){let c=$(id),r=c.getBoundingClientRect(),d=window.devicePixelRatio||1;c.width=Math.max(300,r.width*d);c.height=210*d;let x=c.getContext('2d');x.scale(d,d);return {x,w:r.width,h:210}}
+function drawBars(id,data,color){let {x,w,h}=canvasSetup(id);x.clearRect(0,0,w,h);let max=Math.max(60,...data.map(a=>a.value));let pad=25,bw=(w-pad*2)/data.length*.55;data.forEach((a,i)=>{let xx=pad+i*(w-pad*2)/data.length,hh=(h-55)*a.value/max;x.fillStyle=color;x.fillRect(xx,h-30-hh,bw,hh);x.fillStyle='#9eb1b8';x.font='10px system-ui';x.textAlign='center';x.fillText(a.label,xx+bw/2,h-10);x.fillText(a.value?Math.round(a.value):'',xx+bw/2,h-35-hh)})}
+function drawDonut(id,vals,colors){let {x,w,h}=canvasSetup(id);x.clearRect(0,0,w,h);let total=vals.reduce((a,b)=>a+b,0),cx=w/2,cy=95,r=68,inner=43,start=-Math.PI/2;if(!total){x.fillStyle='#9eb1b8';x.font='13px system-ui';x.textAlign='center';x.fillText('No distance logged',cx,100);return}vals.forEach((v,i)=>{let end=start+v/total*Math.PI*2;x.beginPath();x.arc(cx,cy,r,start,end);x.arc(cx,cy,inner,end,start,true);x.closePath();x.fillStyle=colors[i];x.fill();start=end});x.fillStyle='#edf4f5';x.font='bold 17px system-ui';x.textAlign='center';x.fillText(total>=100?Math.round(total)+'':total.toFixed(1),cx,cy+5);x.fillStyle='#9eb1b8';x.font='10px system-ui';x.fillText('total units',cx,cy+21)}
+function renderWeight(){let sorted=state.weights.slice().sort((a,b)=>a.date.localeCompare(b.date)),current=sorted.at(-1)?.value??state.profile.startWeight,target=state.profile.targetWeight,start=state.profile.startWeight; $('currentWeight').textContent=current.toFixed(1);let lost=start-current,goal=start-target,progress=goal>0?Math.max(0,Math.min(100,lost/goal*100)):0;$('weightProgress').style.width=progress+'%';$('weightRemaining').textContent=`${Math.max(0,current-target).toFixed(1)} kg to target · ${progress.toFixed(0)}% of target change`;drawWeightChart();$('weightHistory').innerHTML=sorted.slice().reverse().map(w=>`<div class="weight-row"><span>${fmtDate(w.date,{month:'short',day:'numeric',year:'numeric'})}</span><strong>${(+w.value).toFixed(1)} kg</strong><button class="iconbtn" data-delweight="${w.date}">×</button></div>`).join('');document.querySelectorAll('[data-delweight]').forEach(b=>b.onclick=()=>{state.weights=state.weights.filter(w=>w.date!==b.dataset.delweight);save()})}
+function drawWeightChart(){let {x,w,h}=canvasSetup('weightChart'),arr=state.weights.slice().sort((a,b)=>a.date.localeCompare(b.date));x.clearRect(0,0,w,h);if(arr.length<2){x.fillStyle='#9eb1b8';x.font='13px system-ui';x.textAlign='center';x.fillText('Add another weigh-in to see your trend.',w/2,100);return}let vals=arr.map(a=>+a.value),min=Math.min(...vals)-1,max=Math.max(...vals)+1;x.strokeStyle='#8ee0bd';x.lineWidth=3;x.beginPath();arr.forEach((a,i)=>{let xx=20+i*(w-40)/(arr.length-1),yy=20+(max-a.value)/(max-min||1)*(h-55);if(i)x.lineTo(xx,yy);else x.moveTo(xx,yy)});x.stroke();arr.forEach((a,i)=>{let xx=20+i*(w-40)/(arr.length-1),yy=20+(max-a.value)/(max-min||1)*(h-55);x.fillStyle='#8ee0bd';x.beginPath();x.arc(xx,yy,4,0,Math.PI*2);x.fill()})}
+$('weightForm').onsubmit=e=>{e.preventDefault();let date=$('weightDate').value,value=+$('weightValue').value;state.weights=state.weights.filter(w=>w.date!==date);state.weights.push({date,value});save();$('weightValue').value='';toast('Weigh-in saved')};
+function renderRaces(){let now=todayISO(),races=[{name:'Duathlon',date:'2027-02-21',dist:'10km run · 45km bike · 5km run',tag:'Run / Bike / Run'},{name:'Standard triathlon',date:state.profile.aprilDate,dist:'1.5km swim · 45km bike · 10km run',tag:'Standard distance'},{name:'Sprint triathlon',date:'2027-06-13',dist:'750m swim · 20km bike · 5km run',tag:'Sprint distance'}];$('raceList').innerHTML=races.map(r=>`<div class="card"><div class="race"><div><span class="tag blue">${r.tag}</span><h2 style="margin:8px 0 3px">${r.name}</h2><div class="muted small">${r.date?fmtDate(r.date,{month:'long',day:'numeric',year:'numeric'}):'Date to be confirmed'}</div><div class="muted small">${r.dist}</div></div><div style="text-align:right"><div class="value" style="font-size:25px;font-weight:800">${r.date?Math.max(0,daysBetween(now,r.date)):'—'}</div><div class="muted small">${r.date?(r.date<now?'days ago':'days left'):''}</div></div></div></div>`).join('')}
+function renderSettings(){$('sStartWeight').value=state.profile.startWeight;$('sTargetWeight').value=state.profile.targetWeight;$('sAprilDate').value=state.profile.aprilDate||'';$('sHours').value=state.profile.weeklyHours;$('weightDate').value=todayISO();$('wDate').value=todayISO()}
+$('settingsForm').onsubmit=e=>{e.preventDefault();state.profile={startWeight:+$('sStartWeight').value,targetWeight:+$('sTargetWeight').value,aprilDate:$('sAprilDate').value,weeklyHours:+$('sHours').value||9};save();toast('Settings saved')};
+function exportJSON(){let blob=new Blob([JSON.stringify({app:'Triathlon 2027 Tracker',version:1,exportedAt:new Date().toISOString(),state},null,2)],{type:'application/json'});download(blob,'triathlon-2027-backup-'+todayISO()+'.json')}
+function download(blob,name){let a=document.createElement('a'),u=URL.createObjectURL(blob);a.href=u;a.download=name;a.click();URL.revokeObjectURL(u)}
+function exportCSV(){let rows=[['Date','Type','Duration min','Distance km','Average HR','Pace/Speed','RPE','Status','Notes'],...state.workouts.map(w=>[w.date,w.type,w.duration,w.distance,w.hr,w.pace,w.rpe,w.status,w.notes])];let csv=rows.map(r=>r.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(',')).join('\n');download(new Blob([csv],{type:'text/csv'}),'triathlon-workouts-'+todayISO()+'.csv')}
+$('exportBtn').onclick=exportJSON;$('exportTop').onclick=exportJSON;$('exportCsv').onclick=exportCSV;
+$('importFile').onchange=async e=>{let f=e.target.files[0];if(!f)return;try{let parsed=JSON.parse(await f.text()),incoming=parsed.state||parsed;if(!incoming.workouts||!incoming.weights||!incoming.profile)throw Error('Invalid backup');if(!confirm('Restore this backup? Current app data will be replaced.'))return;state={...structuredClone(defaultState),...incoming,profile:{...defaultState.profile,...incoming.profile}};save();renderSettings();toast('Backup restored')}catch(err){alert('Could not restore backup: '+err.message)}e.target.value=''};
+$('resetBtn').onclick=()=>{if(confirm('Permanently reset all locally saved workouts, weigh-ins and settings? Export a backup first if needed.')){state=structuredClone(defaultState);save();renderSettings();toast('App data reset')}};
+$('prevWeek').onclick=()=>{weekOffset--;renderCalendar()};$('nextWeek').onclick=()=>{weekOffset++;renderCalendar()};$('thisWeek').onclick=()=>{weekOffset=0;renderCalendar()};
+$('addTop').onclick=()=>{openLog();nav('log')};
+function renderAll(){renderDashboard();renderCalendar();renderRecent();renderAnalytics();renderWeight();renderRaces();renderSettings()}
+window.addEventListener('resize',()=>{if($('analytics').classList.contains('active'))drawAnalytics();if($('weight').classList.contains('active'))drawWeightChart()});
+openLog();renderAll();
+if('serviceWorker'in navigator && location.protocol.startsWith('http'))window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+</script>
+</body></html>

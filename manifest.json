@@ -1,0 +1,17 @@
+{
+  "name": "Triathlon 2027 Tracker",
+  "short_name": "Triathlon 2027",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0b151b",
+  "theme_color": "#10232d",
+  "description": "Personal local-first triathlon training tracker",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
