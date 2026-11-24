@@ -173,7 +173,7 @@ function actualFor(date,type){return state.workouts.filter(w=>w.date===date&&(w.
 function completed(plan){return state.workouts.some(w=>w.date===plan.date&&(w.type===plan.type|| (plan.type==='Run'&&w.type==='Brick')))}
 function fmtDuration(m){if(!m)return '—';let h=Math.floor(m/60),r=m%60;return h?`${h}h ${r}m`:`${r} min`}
 function safe(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function nav(view){document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===view));document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===view));if(view==='analytics')drawAnalytics();if(view==='calendar')renderCalendar();if(view==='weight')renderWeight()}
+function nav(view){document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===view));document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===view));if(view==='analytics')renderAnalytics();if(view==='calendar')renderCalendar();if(view==='weight')renderWeight();if(view==='strength')renderStrength('wed')}
 document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>nav(b.dataset.view));
 document.querySelectorAll('[data-goto]').forEach(b=>b.onclick=()=>nav(b.dataset.goto));
 function renderDashboard(){
@@ -195,8 +195,9 @@ function renderCalendar(){
  const base=addDays(weekStart(todayISO()),weekOffset*7),end=addDays(base,6);
  $('calTitle').textContent=fmtDate(base,{month:'long',day:'numeric'})+' – '+fmtDate(end,{month:'long',day:'numeric',year:'numeric'});
  const days=[];for(let s=base;s<=end;s=addDays(s,1)){if(s<START||s>END)continue;days.push(...flattenPlan(s))}
- $('calendarList').innerHTML=days.map((p,i)=>{let isdone=completed(p);return `<div class="day ${p.date===todayISO()?'today':''} ${isdone?'done':''}"><div class="date">${fmtDate(p.date,{weekday:'short',month:'short',day:'numeric'})}</div><div><strong>${safe(p.title)}</strong><div class="desc">${p.duration?fmtDuration(p.duration):'Race / rest'} · ${p.distance||0} km · ${safe(p.detail)}</div></div><div class="day-actions"><button class="iconbtn" data-log="${p.date}" data-type="${p.type}" title="Log this session">＋</button><button class="iconbtn" data-done="${p.date}" data-type="${p.type}" title="Mark complete">✓</button></div></div>`}).join('')||'<div class="empty">No plan in this week.</div>';
+ $('calendarList').innerHTML=days.map((p,i)=>{let isdone=completed(p);return `<div class="day ${p.date===todayISO()?'today':''} ${isdone?'done':''}"><div class="date">${fmtDate(p.date,{weekday:'short',month:'short',day:'numeric'})}</div><div><strong>${safe(p.title)}</strong><div class="desc">${p.duration?fmtDuration(p.duration):'Race / rest'} · ${p.distance||0} km · ${safe(p.detail)}</div></div><div class="day-actions"><button class="iconbtn" data-log="${p.date}" data-type="${p.type}" title="Log this session">＋</button><button class="iconbtn" data-done="${p.date}" data-type="${p.type}" title="Mark complete">✓</button>${p.type==='Strength'?`<button class="iconbtn" data-strength-open="1" title="Open strength library">Details</button>`:''}</div></div>`}).join('')||'<div class="empty">No plan in this week.</div>';
  $('calendarList').querySelectorAll('[data-log]').forEach(b=>b.onclick=()=>{openLog(b.dataset.log,b.dataset.type);nav('log')});
+ $('calendarList').querySelectorAll('[data-strength-open]').forEach(b=>b.onclick=()=>nav('strength'));
  $('calendarList').querySelectorAll('[data-done]').forEach(b=>b.onclick=()=>{let date=b.dataset.done,type=b.dataset.type;let existing=state.workouts.find(w=>w.date===date&&w.type===type);if(existing){toast('A workout of this type is already logged.')}else{state.workouts.push({id:crypto.randomUUID(),date,type,duration:0,distance:0,status:'Completed',notes:'Marked complete from training plan'});save();toast('Marked complete')}})
 }
 function openLog(date=todayISO(),type='Run'){
